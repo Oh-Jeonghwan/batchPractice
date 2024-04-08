@@ -1,0 +1,30 @@
+server:
+  port: 8082
+  servlet:
+    encoding:
+      charset: utf-8
+      enabled: true
+
+spring:
+  batch:
+    job:
+      names: ${job.name:NONE} #openConfig 프로그램 파리미더에 = 좌우로 띄어쓰기 들어가면 안 됨
+      enabled: true
+    jdbc:
+      initialize-schema: always
+  datasource:
+      driver-class-name: org.mariadb.jdbc.Driver
+      hikari:
+          jdbc-url : jdbc:mariadb://localhost:3307/batch_parctice
+          username : "flature"
+          password : "aroundhub12#"
+          pool-name: dataSource
+          #driver-class-name: org.mariadb.jdbc.Driver
+
+  jpa:
+    open-in-view: true #뭔지 한번 찾아봐야한다.
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl #내가 적은 이름 그대로 컬럼명이 만들어짐
+    show-sql: true
